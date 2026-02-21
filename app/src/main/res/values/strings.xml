@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Game24</string>
+    <string name="title">Game24 — squelette prêt</string>
+    <string name="pick_folder">Folder</string>
+    <string name="numbers_fmt">Nombres : %1$d  %2$d  %3$d  %4$d</string>
+    <string name="hint_expr">Tape ton expression (ex: (8-2)*3*2)</string>
+    <string name="check">Vérifier</string>
+    <string name="no_reward">Choisis d’abord un dossier (menu « Folder »)</string>
+    <string name="win">Bravo ! 24 atteint 🎉</string>
+    <string name="lose">Pas 24… essaie encore</string>
+    <string name="badnums">Ton expression n’utilise pas exactement ces quatre nombres.</string>
+</resources>

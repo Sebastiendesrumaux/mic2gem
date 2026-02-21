@@ -1,0 +1,49 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.mic2gem'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.mic2gem"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // Force la résolution des conflits de bibliothèques
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.jetbrains.kotlin') {
+                details.useVersion '1.8.22'
+            }
+        }
+    }
+}
+
+dependencies {
+    // Utilisation d'un BOM (Bill of Materials) pour aligner toutes les versions de Kotlin
+    implementation platform("org.jetbrains.kotlin:kotlin-bom:1.8.22")
+
+    implementation 'ai.picovoice:porcupine-android:4.0.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+    implementation 'androidx.core:core:1.12.0'
+}
+

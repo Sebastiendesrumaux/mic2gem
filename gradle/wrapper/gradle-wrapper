@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/sh
+WRAP_DIR="$(cd "$(dirname "$0")" && pwd)"
+JAR="$WRAP_DIR/gradle-wrapper.jar"
+JAVA_HOME_DEFAULT="/data/data/com.termux/files/usr/lib/jvm/java-17-openjdk"
+JAVA_CMD="${JAVA_HOME:-$JAVA_HOME_DEFAULT}/bin/java"
+[ -x "$JAVA_CMD" ] || JAVA_CMD="java"
+
+if [ -f "$JAR" ]; then
+  exec "$JAVA_CMD" $DEFAULT_JVM_OPTS -classpath "$JAR" org.gradle.wrapper.GradleWrapperMain "$@"
+else
+  if command -v gradle >/dev/null 2>&1; then
+    exec gradle "$@"
+  else
+    echo "Gradle introuvable et gradle-wrapper.jar absent." >&2
+    echo "Installe gradle:  pkg install gradle" >&2
+    exit 1
+  fi
+fi

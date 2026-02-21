@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_pick_folder"
+        android:title="@string/pick_folder"
+        android:showAsAction="always" />
+</menu>
