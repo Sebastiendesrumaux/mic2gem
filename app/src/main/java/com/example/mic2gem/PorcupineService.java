@@ -6,9 +6,11 @@ import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.*;
 import android.widget.Toast;
+
 import ai.picovoice.porcupine.*;
 
 public class PorcupineService extends Service {
+	private RandomSound randomSound;
 
     private PorcupineManager porcupineManager;
     private SoundPool soundPool;
@@ -20,6 +22,8 @@ public class PorcupineService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+	randomSound = new RandomSound(this);
+
         setupSoundPool();
         startForegroundService();
     }
@@ -57,7 +61,8 @@ public class PorcupineService extends Service {
                     .build(getApplicationContext(), (keywordIndex) -> {
                         // Comme on n'a passé qu'un seul mot, l'index sera toujours 0
                         showDebugToast("🐝 Bumblebee détecté !");
-                        soundPool.play(beepId, 1, 1, 0, 0, 1);
+                        randomSound.play();
+			//soundPool.play(beepId, 1, 1, 0, 0, 1);
                         stopListening();
                         processSequence();
                     });

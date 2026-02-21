@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
     ActivityCompat.requestPermissions(this, new String[]{
         Manifest.permission.RECORD_AUDIO,
-        Manifest.permission.POST_NOTIFICATIONS
+        Manifest.permission.POST_NOTIFICATIONS,
+	Manifest.permission.READ_MEDIA_AUDIO
+
     }, 1);
 } else {
     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
