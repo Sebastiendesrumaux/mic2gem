@@ -89,7 +89,7 @@ public class PorcupineService extends Service {
         handler.postDelayed(() -> {
             Intent macroIntent = new Intent("mic2gem_intent");
             sendBroadcast(macroIntent);
-            resumeListeningAfterDelay(7000);
+            resumeListeningAfterDelay(5000);
         }, 2000);
     }
 
